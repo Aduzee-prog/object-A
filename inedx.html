@@ -35,11 +35,11 @@
             <div class="text-center" id="btnForSubmit">
                 <button class="col-3 py-2" id="submitButton">Submit</button>
             </div>
-            <div class="text-center pt-5 d-none"  id="load">
+            <div class="text-center pt-5 " style="display: none;" id="load">
                 <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-              </div>
+            </div>
         </div>
 
     </div>
@@ -77,24 +77,37 @@
             let check;
             let see = JSON.parse(localStorage.getItem('user')) || []
             check = see
-            let look = check.find(data=> data.maily === mail.value)
-            toast('Email Exist', 'green', 2000);
-            if(look==undefined){
+            let look = check.find(data => data.maily === mail.value)
+            if (look == undefined) {
                 const obj = {
-                first: fName.value,
-                last: lName.value,
-                maily: mail.value,
-                pin: pass.value,
-            }
-            allUser.push(obj)
-            localStorage.setItem('user', JSON.stringify(allUser));
-            setTimeout(() => { window.location.href = 'signin.html' }, 2000)
-            console.log(allUser);
-            fName.value = ''
-            lName.value = ''
-            mail.value = ''
-            pass.value = ''
-            let chek = check.find(data=> data.maily === mail.value) 
+                    first: fName.value,
+                    last: lName.value,
+                    maily: mail.value,
+                    pin: pass.value,
+                }
+                allUser.push(obj)
+                localStorage.setItem('user', JSON.stringify(allUser));
+                toast('Sign up successfully', 'green', 1000)
+                submitButton.style.display = 'none'
+                load.style.display = block
+                setTimeout(() => { window.location.href = 'signin.html' }, 2000)
+                console.log(allUser);
+                fName.value = ''
+                lName.value = ''
+                mail.value = ''
+                pass.value = ''
+                let chek = check.find(data => data.maily === mail.value)
+            } else if (look) {
+                toast('Email Exist', 'red', 2000);
+                btnForSubmit.style.display = 'none'
+                load.style.display = 'block'
+                setTimeout(() => {
+                    btnForSubmit.style.display = 'block'
+                }, 1000)
+                setTimeout(() => {
+                    load.style.display = 'none'
+                }, 900)
+
             }
         }
     })
