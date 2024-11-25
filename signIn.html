@@ -60,7 +60,7 @@
             gottenUser = ls
             let found = gottenUser.find(email => email.maily === mail.value && email.pin === pass.value);
             console.log(found);
-            if (found == undefined) {
+            if (found == "") {
                 toast('user not found','green', 2000)
             } else {
                 window.location.href = 'dashboard.html'

@@ -11,14 +11,18 @@
 <body>
   <h1 class="text-center mt-3">WELCOME TO ADUZEE CLASS</h1>
     <div class="container-fluid mt-lg-4 mt-3 col-lg-4 col-10 mx-auto shadow rounded-3 px-lg-4 px-2 py-md-5 py-lg-0">
-      <p id="mss"></p>
+      <p id="mss" class="text-center text-black"></p>
       
     </div>  
   
 </body>
 <script>
   let mess = JSON.parse(localStorage.getItem('user')) || []
-  let nam = mess.find(names=> names.first === fName.value && names.last === lName.value );
-  console.log('nam');
+  let nam = mess.find(names=> names.first && names.last );
+  console.log(nam);
+  mss.innerHTML = nam
+
+
+  
 </script>
 </html>
