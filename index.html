@@ -86,7 +86,7 @@
                     pin: pass.value,
                 }
                 allUser.push(obj)
-                localStorage.setItem(JSON.stringify(allUser));
+                localStorage.setItem('user', JSON.stringify(allUser));
                 toast('Sign up successfully', 'green', 1000)
                 submitButton.style.display = 'none'
                 load.style.display =' block'
