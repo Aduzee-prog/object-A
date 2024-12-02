@@ -13,10 +13,10 @@
 
 <body>
     <h1 class="text-center mt-3">Sign In</h1>
-    <div class="container-fluid mt-lg-4 mt-3 col-lg-4 col-10 mx-auto shadow rounded-3 px-lg-4 px-2 py-md-5 py-lg-0">
+    <div class="container-fluid mt-lg-4 mt-3 col-lg-5 col-11 mx-auto shadow rounded-3 px-lg-4 px-2 py-md-5 py-lg-0">
         <div class="py-5">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                <input type="email" class="form-control" id="may" placeholder="name@example.com">
                 <label for="email">Enter Email</label>
             </div>
             <div class="form-floating mb-3">
@@ -49,22 +49,23 @@
         }).showToast();
     }
     const pot = document.getElementById('logInButton')
-    const mail = document.getElementById('email')
-    const pass = document.getElementById('password')
+    const mails = document.getElementById('may')
+    const pas = document.getElementById('password')
     pot.addEventListener('click', () => {
-        if (mail.value == '' || pass.value == '') {
-            toast('enter your information', 'green', 3000)
-        } else {
-            let gottenUser;
+        let gottenUser;
             let ls = JSON.parse(localStorage.getItem('user')) || []
             gottenUser = ls
-            let found = gottenUser.find(email => email.maily === mail.value && email.pin === pass.value);
-            console.log(found);
-            if (found == "") {
-                toast('user not found','green', 2000)
-            } else {
-                window.location.href = 'dashboard.html'
-            }
+            let found = gottenUser.find(email => email.maily === mails.value && email.pin === pas.value);
+        if (mails.value == '' || pas.value == '') {
+            toast('enter your information', 'red', 3000)
+        } else if (found == undefined)  {
+            toast('user not found','red', 2000)
+        }else{
+            toast('signIn successfully','green', 1000)
+            setTimeout(()=>{
+                window.location.href = 'dashboard.html' 
+            }, 1500)
+             
         }
 
     })

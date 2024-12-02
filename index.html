@@ -33,7 +33,7 @@
                 <label>Create Password</label>
             </div>
             <div class="text-center" id="btnForSubmit">
-                <button class="col-3 py-2" id="submitButton">Submit</button>
+                <button class="col-3 py-2 " id="submitButton">Submit</button>
             </div>
             <div class="text-center pt-5 " style="display: none;" id="load">
                 <div class="spinner-border" role="status">
@@ -86,7 +86,7 @@
                     pin: pass.value,
                 }
                 allUser.push(obj)
-                localStorage.setItem('user', JSON.stringify(allUser));
+                localStorage.setItem(JSON.stringify(allUser));
                 toast('Sign up successfully', 'green', 1000)
                 submitButton.style.display = 'none'
                 load.style.display =' block'
