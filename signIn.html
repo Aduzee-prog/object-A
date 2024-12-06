@@ -58,13 +58,16 @@
             let found = gottenUser.find(email => email.maily === mails.value && email.pin === pas.value);
         if (mails.value == '' || pas.value == '') {
             toast('enter your information', 'red', 3000)
-        } else if (found == undefined)  {
-            toast('user not found','red', 2000)
-        }else{
+        } else if (found == true)  {
             toast('signIn successfully','green', 1000)
             setTimeout(()=>{
                 window.location.href = 'dashboard.html' 
             }, 1500)
+        }else{
+            toast('user not found','red', 2000)
+            setTimeout(() => {
+                window.location.href = 'index.html'
+            }, 2000)
              
         }
 

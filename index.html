@@ -78,12 +78,13 @@
             let see = JSON.parse(localStorage.getItem('user')) || []
             check = see
             let look = check.find(data => data.maily === mail.value)
-            if (look == undefined) {
+            if (look == false) {        
                 const obj = {
                     first: fName.value,
                     last: lName.value,
                     maily: mail.value,
                     pin: pass.value,
+                    time: new Date().toLocaleDateString()
                 }
                 allUser.push(obj)
                 localStorage.setItem('user', JSON.stringify(allUser));
@@ -111,6 +112,8 @@
             }
         }
     })
+    console.log(obj);
+    
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
